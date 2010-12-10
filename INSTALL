@@ -1,0 +1,10 @@
+Installation Instructions
+-------------------------
+
+Sorry these are a little sparse at the moment. 
+
+Requirements: python >= 2.6, scipy, matplotlib
+
+Other than this you should be able to cd into the src directory and run and of the
+functions by typing  "python <function_name>.py". 
+

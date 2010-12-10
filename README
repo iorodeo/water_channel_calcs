@@ -1,0 +1,63 @@
+water_channel_calcs
+
+This project contains calculations for the design of captive trajectory/inertial sled
+and unified control system for the caltech 40m water channel.
+
+Summary of Python modules in src/ directory:
+
+parameters.py
+-------------
+Provides a single location for storing parameters relating to calculations for
+the Caltech 40m water channel project.  Note, some numbers are necessarily
+estimates and should be clearly marked as such. In general I have tried to
+select all estimated parameters such that they over estimate the forces acting
+on the model. 
+
+force_calcs.py
+--------------
+Estimate of fluid drag on the submarine model and mount -  will be used to help
+select the force sensor required or if more than one sensor is needed to span
+the full 0-3m/s range. Note, this is only the passive forces not that due to
+the actuator. However, if the sub can really go 3m/s per second than the
+actuator must be capable of producing at least this much force.
+
+moment_calcs.py
+---------------
+Estimate of fluid dynamic moments on the submarine model and mount - will be
+used to help size the air bearing and sensor moment and side load requirements
+for this application.  
+
+force_model.py
+--------------
+Purpose: provides a models of the forces and moments acting on the submarine
+model and mount hydrofoil. Both the standard square law model and linearized
+models force models are given.  The linearized force models are specified by
+selecting a desired operating point. Note, this module uses functions in the
+force_calcs module.
+
+freq_response.py
+----------------
+Purpose: Computes the expected frequency response of the system as a function
+of operating point velocity. Plots the amplitude and phase of the system as a
+function of the frequency - i.e., produces a bode plot of the system response.
+Plots the time constant and 3dB frequencies as a function of operating point
+velocity.
+
+captive_traj_sim.py
+-------------------
+Purpose: provides a simulation of the performance of the captive trajecory
+system to help determine the bandwidth requirements for the long range laser
+distance sensor and the required update frequency of system's realtime loop.
+Simulations of normal (inertial) system response are also provided for
+comparison. Plots example trajectories for constant force response. Plots the
+percent absolute velocity error as a function of realtime loop frequency. 
+
+inertial_sled_sim.py
+--------------------
+Purpose: provides a simulation of the inertial sled system with the goal of
+determining the required bandwith for the short range laser distance sensor,
+the the required update frequency of the realtime loop and the required motor
+performance. Also, provides a method a determining the required system gains.
+
+
+
